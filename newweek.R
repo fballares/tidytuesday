@@ -8,7 +8,7 @@ next_tuesday <- Sys.Date() + (7 - i + 2) %% 7
 
 # Get ISO week, create new week folder and plot subfolder
 which_week <- isoweek(next_tuesday)
-folder <- paste0("2020-week", which_week, "plots") 
+folder <- paste0("2020-week", which_week) 
 dir.create(file.path(folder), recursive = TRUE)
 
 # Create README 
@@ -30,8 +30,7 @@ script_text <- paste0(
   '\"temp\", paste0(\"',
   newscript,
   '-\", format(Sys.time(), \"%Y%m%d_%H%M%S\"), \".png\")), dpi = 320)',
-  '\n',
-  'gg_embed()'
+  '\n'
 )
 write(as.character(script_text), file(script_file))
 
